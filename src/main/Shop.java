@@ -215,6 +215,7 @@ public class Shop {
 		// now read from file
 		this.readInventory(); 
 		 
+		
 	}
 
 	/**
