@@ -276,8 +276,20 @@ public class Shop {
 	 * add a new product to inventory getting data from console
 	 */
 	public void addProduct() {
-		// TODO RA1-ISSUE-06: demanar dades minimes, crear un Product i afegir-lo a inventory.
-		System.out.println("RA1-ISSUE-06 pendent: encara no es poden afegir articles.");
+	    Scanner scanner = CONSOLE;
+
+	    System.out.print("Introduïu el nom de l'article: ");
+	    String name = scanner.next();
+
+	    System.out.print("Introduïu el preu del proveïdor: ");
+	    double price = scanner.nextDouble();
+
+	    System.out.print("Introduïu les unitats en estoc: ");
+	    int stock = scanner.nextInt();
+	    
+	    Product product = new Product(name, new Amount(price), true, stock);
+	    addProduct(product);
+	    System.out.println("Article afegit correctament.");
 	}
 
 	/**
