@@ -252,6 +252,7 @@ public class Shop {
 		        return product;
 
 		    } catch (NumberFormatException e) {
+		        System.out.println("Línia ignorada: el preu o l'estoc no són vàlids.");
 		        return null;
 		    }
 		}
