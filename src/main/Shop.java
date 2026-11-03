@@ -260,10 +260,33 @@ public class Shop {
 	/**
 	 * Save the current inventory to items.txt.
 	 */
-	public void saveInventory() {
-		// TODO RA1-ISSUE-09: convertir cada Product en una linia i reescriure items.txt.
-		System.out.println("RA1-ISSUE-09 pendent: encara no s'ha desat l'inventari.");
-	}
+		/**
+		 * Save current inventory to file
+		 */
+		public void saveInventory() {
+
+		    File file = new File(System.getProperty("user.dir")
+		            + File.separator + "src"
+		            + File.separator + "model"
+		            + File.separator + "files"
+		            + File.separator + ITEMS_FILE);
+
+		    try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+
+		        for (Product product : inventory) {
+		            if (product != null) {
+		                writer.println("Item:" + product.getName()
+		                        + ";Wholesaler Price:" + product.getWholesalerPrice().getValue()
+		                        + ";Stock:" + product.getStock() + ";");
+		            }
+		        }
+
+		        System.out.println("Inventari desat correctament.");
+
+		    } catch (IOException e) {
+		        System.out.println("Error en desar l'inventari: " + e.getMessage());
+		    }
+		}
 
 	/**
 	 * show current total cash
@@ -295,9 +318,29 @@ public class Shop {
 	/**
 	 * remove a new product to inventory getting data from console
 	 */
+	/**
+	 * remove a product from inventory getting data from console
+	 */
+	/**
+	 * remove a product from inventory getting data from console
+	 */
 	public void removeProduct() {
-		// TODO RA1-ISSUE-08: retirar un Product de inventory sense alterar la resta.
-		System.out.println("RA1-ISSUE-08 pendent: encara no es poden eliminar articles.");
+	    CONSOLE.nextLine();
+
+	    System.out.print("Introduïu el nom de l'article que voleu eliminar: ");
+	    String name = CONSOLE.nextLine();
+
+	    Product product = findProduct(name);
+
+	    if (product == null) {
+	        System.out.println("Article no trobat.");
+	        return;
+	    }
+
+	    inventory.remove(product);
+	    numberProducts--;
+
+	    System.out.println("Article eliminat correctament.");
 	}
 
 	/**
