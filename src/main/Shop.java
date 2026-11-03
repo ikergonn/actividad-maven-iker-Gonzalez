@@ -304,8 +304,27 @@ public class Shop {
 	 * add stock for a specific product
 	 */
 	public void addStock() {
-		// TODO RA1-ISSUE-07: trobar un Product i actualitzar el seu estoc.
-		System.out.println("RA1-ISSUE-07 pendent: encara no es pot modificar l'estoc.");
+	    System.out.print("Introduïu el nom de l'article: ");
+	    String name = CONSOLE.next();
+
+	    Product product = findProduct(name);
+
+	    if (product == null) {
+	        System.out.println("Article no trobat.");
+	        return;
+	    }
+
+	    System.out.print("Introduïu el nou estoc: ");
+	    int newStock = CONSOLE.nextInt();
+
+	    if (newStock < 0) {
+	        System.out.println("L'estoc no pot ser negatiu.");
+	        return;
+	    }
+
+	    product.setStock(newStock);
+
+	    System.out.println("Estoc actualitzat correctament.");
 	}
 
 	/**
